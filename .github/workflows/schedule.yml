@@ -1,0 +1,36 @@
+name: Daily Appointment Reminder
+
+on:
+  schedule:
+    # Runs at 10:00 UTC (which is 12:00 or 13:00 Israel time)
+    - cron: '0 10 * * *'
+  # Allows manual run for testing
+  workflow_dispatch:
+
+jobs:
+  run-reminder-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Restore Secret Files
+        # משחזר את קבצי האימות מתוך הכספת
+        run: |
+          echo '${{ secrets.GCP_CREDENTIALS_JSON }}' > credentials.json
+          echo '${{ secrets.GCP_TOKEN_JSON }}' > token.json
+
+      - name: Run Automation Script
+        env:
+          MACRODROID_WEBHOOK_URL: ${{ secrets.MACRODROID_WEBHOOK_URL }}
+        run: python main.py
