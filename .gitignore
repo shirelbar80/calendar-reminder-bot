@@ -1,0 +1,11 @@
+# Secrets - NEVER UPLOAD THESE
+token.json
+credentials.json
+client_secret.json
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment settings
+.env
