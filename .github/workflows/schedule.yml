@@ -2,7 +2,7 @@ name: Daily Appointment Reminder
 
 on:
   schedule:
-    - cron: '05 11 * * *' # 10:00 UTC = 12:00 (Winter) / 13:00 (Summer) Israel Time
+    - cron: '20 11 * * *' # 10:00 UTC = 12:00 (Winter) / 13:00 (Summer) Israel Time
   workflow_dispatch:      # Allows manual trigger for testing
 
 jobs:
@@ -17,6 +17,9 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.12' 
+
+      - name: Debug Time
+        run: date
 
       - name: Install Dependencies
         run: |
