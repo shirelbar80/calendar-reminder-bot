@@ -1,7 +1,7 @@
 # 💇‍♀️ Automated Hair Salon Appointment Reminder
 
 A fully automated Python system designed to manage client reminders.
-It scans a Google Calendar daily, filters relevant appointments, and sends personalized WhatsApp reminders using a webhook integration.
+It scans a Google Calendar daily, filters relevant appointments, and sends personalized SMS reminders using a webhook integration.
 
 ## 🚀 Key Features
 
@@ -12,7 +12,7 @@ It scans a Google Calendar daily, filters relevant appointments, and sends perso
 
 ## 🛠️ Tech Stack
 
-- Python 3.9
+- Python 3.12
 - Google Calendar API (OAuth 2.0)
 - GitHub Actions (CI/CD)
 - MacroDroid Webhooks
@@ -20,3 +20,4 @@ It scans a Google Calendar daily, filters relevant appointments, and sends perso
 ## ⚙️ Usage
 
 The system is designed to run in a containerized environment or via cloud workflows, ensuring zero manual maintenance for the business owner.
+
