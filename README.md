@@ -7,7 +7,7 @@ It scans a Google Calendar daily, filters relevant appointments, and sends perso
 
 - **Smart Filtering:** Detects appointments by specific color codes (Lavender).
 - **Data Extraction:** Parses Israeli phone numbers (`05X-XXXXXXX`) from event descriptions.
-- **Automation:** Deployed via **GitHub Actions** to run automatically every day at 12:00 PM.
+- **Automation:** Deployed via **GitHub Actions** to run automatically every day at 10:00 AM.
 - **Security:** Uses Environment Variables to protect sensitive API keys.
 
 ## 🛠️ Tech Stack
@@ -20,4 +20,5 @@ It scans a Google Calendar daily, filters relevant appointments, and sends perso
 ## ⚙️ Usage
 
 The system is designed to run in a containerized environment or via cloud workflows, ensuring zero manual maintenance for the business owner.
+
 
