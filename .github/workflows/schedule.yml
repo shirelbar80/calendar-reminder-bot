@@ -1,7 +1,7 @@
-name: Daily Appointment Reminder
+name: Manual Appointment Reminder
 
 on:
-  workflow_dispatch:      # Allows manual trigger for testing
+  workflow_dispatch:      # Manual trigger from GitHub Actions UI
 
 jobs:
   run-reminder-bot:
@@ -25,16 +25,8 @@ jobs:
 
       - name: Restore Secret Files
         run: |
-          # Create authentication files from GitHub Secrets
+          # יצירת קובץ ההזדהות של הרובוט מתוך הסודות
           echo '${{ secrets.GCP_CREDENTIALS_JSON }}' > credentials.json
-          echo '${{ secrets.GCP_TOKEN_JSON }}' > token.json
-          
-          # בדיקה האם הקבצים נוצרו והם לא ריקים (בלי להציג את התוכן שלהם)
-          if [ -s token.json ]; then
-            echo "✅ token.json exists and is not empty."
-          else
-            echo "❌ ERROR: token.json is empty! Check your GitHub Secrets."
-          fi
           
           if [ -s credentials.json ]; then
             echo "✅ credentials.json exists and is not empty."
@@ -45,5 +37,5 @@ jobs:
       - name: Run Automation Script
         env:
           MACRODROID_WEBHOOK_URL: ${{ secrets.MACRODROID_WEBHOOK_URL }}
-        # The -u flag forces Python to output logs immediately (unbuffered)
+          TARGET_CALENDAR_EMAIL: ${{ secrets.TARGET_CALENDAR_EMAIL }} # מעביר את המייל מהכספת לקוד
         run: python -u main.py
